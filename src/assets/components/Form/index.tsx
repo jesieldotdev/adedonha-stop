@@ -8,9 +8,11 @@ import {
 } from "@mui/material";
 import { FormContainer } from "./style";
 import FormController from "./viewController";
-
+import { useParams } from 'react-router-dom';
 const FormGame = () => {
-  const selectedLetter = "J";
+  
+const {letter} = useParams()
+const selectedLetter = letter;
 
   const { topics, ramdomColor, color } = FormController();
 
@@ -64,6 +66,7 @@ const FormGame = () => {
           margin: "auto",
           marginTop: 16,
           marginBottom: 16,
+          backgroundColor: '#f4f4f4'
         }}
         variant="contained"
         color="error"

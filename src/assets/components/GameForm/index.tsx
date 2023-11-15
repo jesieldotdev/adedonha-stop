@@ -53,13 +53,13 @@ const GameForm = () => {
           style={{
             textDecoration: "none",
           }}
-          to="/game/start"
+          to={`/game/start/${letters[prizeNumber]}`}
         >
           <Button
             disabled={mustSpin}
             color="secondary"
             style={{
-              marginTop: "auto",
+              marginTop: "8px",
               width: "100px",
             }}
             variant="contained"

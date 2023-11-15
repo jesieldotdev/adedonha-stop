@@ -19,7 +19,7 @@ const AddPlayerModal = ({ isOpen, close }: AddPlayerModalProps) => {
         content: {
           position: "absolute",
           top: "2vh",
-          left: "2.5vw",
+          left: "8vw",
           // right: "40px",
           bottom: "40px",
           borderRadius: "32px",

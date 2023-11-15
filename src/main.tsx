@@ -18,7 +18,7 @@ const router = createBrowserRouter([
   element: <GameForm />
 },
   {
-  path: '/game/start',
+  path: '/game/start/:letter',
   element: <FormGame />
 },
 ])
