@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const GameFormViewController = () => {
   const [selectedLetter, setSelectedLetter] = useState<any>();
@@ -32,7 +32,7 @@ const GameFormViewController = () => {
     "Z",
   ];
 
-  let data:any = [];
+  let data: any = [];
 
   letters.map((item: any) => {
     data.push({
@@ -43,16 +43,36 @@ const GameFormViewController = () => {
   const [mustSpin, setMustSpin] = useState(false);
   const [alreadySpin, setAlreadySpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const audioRef = useRef<any>(null);
+
+  const togglePlay = (toggle:boolean) => {
+    if (!toggle) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
 
   const handleSpinClick = () => {
     if (!mustSpin) {
       const newPrizeNumber = Math.floor(Math.random() * letters.length);
       setPrizeNumber(newPrizeNumber);
       setMustSpin(true);
-      setAlreadySpin(true)
+      setIsPlaying(true);
+      setAlreadySpin(true);
+      togglePlay(true)
     }
-  }
+  };
 
+  useEffect(() => {
+    if(!mustSpin){
+      togglePlay(false)
+    }
+
+  }, [mustSpin])
   return {
     data,
     letters,
@@ -62,7 +82,11 @@ const GameFormViewController = () => {
     prizeNumber,
     setPrizeNumber,
     handleSpinClick,
-    alreadySpin
+    alreadySpin,
+    isPlaying,
+    setIsPlaying,
+    audioRef,
+    togglePlay,
   };
 };
 

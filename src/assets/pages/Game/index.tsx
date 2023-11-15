@@ -4,6 +4,7 @@ import Lottie from "lottie-react";
 import StopLottie from "../../images/stop-lottie.json";
 import AddPlayerModal from "../../components/AddPlayModalModal";
 import { newGameController } from "./viewController";
+import WebSocketExample from "../../components/WebSocket/webSocket";
 
 const GameScreen = () => {
     const {open, setOpen, closeModal} = newGameController()
@@ -14,6 +15,8 @@ const GameScreen = () => {
       <Typography className="title" variant="h5">
         Jogo Da Adedonha
       </Typography>
+
+      <WebSocketExample />
 
       <AddPlayerModal isOpen={open} close={closeModal} />
 

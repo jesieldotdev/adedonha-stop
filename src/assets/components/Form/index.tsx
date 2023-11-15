@@ -3,61 +3,52 @@ import {
   FormControl,
   FormHelperText,
   Input,
+  InputAdornment,
   InputLabel,
   TextField,
 } from "@mui/material";
-import { FormContainer } from "./style";
+import { FormContainer, FormItem, FormWrapper } from "./style";
 import FormController from "./viewController";
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router-dom";
+
 const FormGame = () => {
-  
-const {letter} = useParams()
-const selectedLetter = letter;
+  const selectedLetter = "J";
+
+  const { letter } = useParams();
 
   const { topics, ramdomColor, color } = FormController();
 
   return (
     <FormContainer>
-      <p className="title">
-        Letra Selecionada <span>{selectedLetter}</span>
-      </p>
+      <p className="title">{letter}</p>
 
-      {topics.map((item: {name:string, icon:string}) => (
-        <div
-          style={{
-            marginTop: 16,
-            backgroundColor: ramdomColor(),
-            padding: 16,
-            borderRadius: 8,
-            display: 'flex',
-            justifyContent: 'center'
-          }}
-        >
-            <p style={{
-                marginRight: 16,
-                fontSize: 32
-            }}>{item.icon}</p>
-          <FormControl>
-            {/* <InputLabel htmlFor="my-input">{item}</InputLabel> */}
-            <TextField
-              id={item.name}
-              placeholder={item.name}
-              style={{
-                width:'260px',
-                display: 'flex',
-                margin: 'auto',
-                justifyContent: 'center'
-                
-              }}
-              aria-describedby="my-helper-text"
-            />
-            <FormHelperText id="my-helper-text">
-              {item.name} com a letra <span>{selectedLetter}</span>
-            </FormHelperText>
-          </FormControl>
-        </div>
-      ))}
+      <FormWrapper>
+        {topics.map((item: { name: string; icon: string }) => (
+          <FormItem className="form-item" key={item.name}>
+            {/* <p className="left-icon">{item.icon}</p> */}
+            <FormControl className="form-control">
+              {/* <InputLabel htmlFor="my-input">{item}</InputLabel> */}
 
+              <TextField
+                id={item.name}
+                className="text-field"
+                placeholder={item.name}
+                aria-describedby="my-helper-text"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">
+                      <p className="left-icon">{item.icon}</p>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <FormHelperText id="my-helper-text">
+                {item.name} com a letra <span>{letter}</span>
+              </FormHelperText>
+            </FormControl>
+          </FormItem>
+        ))}
+      </FormWrapper>
       <Button
         style={{
           width: 200,
@@ -66,12 +57,11 @@ const selectedLetter = letter;
           margin: "auto",
           marginTop: 16,
           marginBottom: 16,
-          backgroundColor: '#f4f4f4'
         }}
         variant="contained"
         color="error"
       >
-        Stop
+        Concluir
       </Button>
     </FormContainer>
   );

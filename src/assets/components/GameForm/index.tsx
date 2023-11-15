@@ -4,6 +4,10 @@ import { useState } from "react";
 import Roullete from "../Roullete";
 import { GameFormViewController } from "./viewController";
 import { Link } from "react-router-dom";
+import { GridContainer } from "./style";
+import Lottie from "lottie-react";
+import Question from '../../images/question.json'
+import MusicPlayer from "../MusicPlayer";
 
 const GameForm = () => {
   const {
@@ -15,6 +19,10 @@ const GameForm = () => {
     selectedLetter,
     setMustSpin,
     alreadySpin,
+    isPlaying,
+    setIsPlaying,
+    togglePlay,
+    audioRef
   } = GameFormViewController();
 
   return (
@@ -22,53 +30,56 @@ const GameForm = () => {
       <div>
         <p className="title">Gire a roleta para escolher a letra inicial</p>
         <p id="letraEscolhida">{selectedLetter || null}</p>
+
+        <Lottie className="lottie" animationData={Question} />
       </div>
-      <Roullete
-        letters={data}
-        mustSpin={mustSpin}
-        prizeNumber={prizeNumber}
-        setMustSpin={setMustSpin}
-        handleSpinClick={undefined}
-      />
 
-      {!mustSpin ? (
-        <>
-          <p className="letter">{letters[prizeNumber]}</p>
-        </>
-      ) : null}
+      <div style={{
+        // backgroundColor:'red'
+      }}>
+        <Roullete
+          letters={data}
+          mustSpin={mustSpin}
+          prizeNumber={prizeNumber}
+          setMustSpin={setMustSpin}
+          handleSpinClick={undefined}
+        />
 
-      <Button
-        disabled={mustSpin}
-        style={{
-          marginTop: "auto",
-          width: 300,
-        }}
-        variant="contained"
-        onClick={() => handleSpinClick()}
-      >
-        Girar Roleta
-      </Button>
-      {alreadySpin && !mustSpin ? (
-        <Link
-          style={{
-            textDecoration: "none",
-          }}
-          to={`/game/start/${letters[prizeNumber]}`}
-        >
+        {!mustSpin ? (
+          <>
+            <p className="letter">{letters[prizeNumber]}</p>
+          </>
+        ) : null}
+
+        <MusicPlayer isPlaying={mustSpin} setIsPlaying={setIsPlaying} togglePlay={() => togglePlay()} audioRef={audioRef}  />
+
+        <GridContainer>
           <Button
             disabled={mustSpin}
-            color="secondary"
-            style={{
-              marginTop: "8px",
-              width: "100px",
-            }}
             variant="contained"
             onClick={() => handleSpinClick()}
           >
-            Continuar
+            Girar Roleta
           </Button>
-        </Link>
-      ) : null}
+          {alreadySpin && !mustSpin ? (
+            <Link
+              style={{
+                textDecoration: "none",
+              }}
+              to={`/game/start/${letters[prizeNumber]}`}
+            >
+              <Button
+                disabled={mustSpin}
+                color="secondary"
+                variant="contained"
+                onClick={() => handleSpinClick()}
+              >
+                Continuar
+              </Button>
+            </Link>
+          ) : null}
+        </GridContainer>
+      </div>
     </GameFormContainer>
   );
 };

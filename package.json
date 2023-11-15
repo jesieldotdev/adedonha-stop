@@ -16,13 +16,15 @@
     "@types/react-modal": "^3.16.3",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.30",
+    "depcheck": "^1.4.7",
     "lottie-react": "^2.4.0",
     "react": "^18.2.0",
     "react-custom-roulette": "^1.4.1",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
     "react-router-dom": "^6.18.0",
-    "react-wheel-of-prizes": "^1.0.9",
+    "react-websocket": "^2.1.0",
+    "socket.io-client": "^4.7.2",
     "styled-components": "^6.1.1"
   },
   "devDependencies": {

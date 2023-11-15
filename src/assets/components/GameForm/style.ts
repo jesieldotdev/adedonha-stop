@@ -8,42 +8,43 @@ const GameFormContainer = styled.div`
   /* background-color: red; */
   height: 92vh;
 
+  .lottie{
+    width: 500px;
+    z-index: -999;
+    position: relative;
+    bottom: -50px;
+    left: 1vw;
+    display: none;
+  }
+
   @media (min-width: 601px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: row;
     margin: auto;
+    justify-content: space-around;
 
     .title {
-      font-size: 24px;
-      font-weight: 400;
-      margin: 0;
-      padding: 0;
-      text-align: center;
-      /* background-color: red; */
-      width: 100%;
+      /* width: 700px; */
       display: flex;
-      justify-content: center;
+      /* background-color: red; */
     }
 
-    .letter {
-      font-size: 64px;
-      font-weight: 900;
-      text-align: center;
-
-      margin: 0;
-      margin-bottom: 8px;
+    .lottie{
+      display: block;
     }
 
-    /* Adicione mais estilos específicos para telas maiores aqui */
   }
   .title {
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 900;
     margin: 0;
     padding: 0;
     text-align: center;
     /* background-color: red; */
-    width: 300px;
+    /* width: 300px; */
+    margin: 8px;
+    text-transform: uppercase;
+    line-height: 1.2;
   }
 
   .letter {
@@ -55,4 +56,13 @@ const GameFormContainer = styled.div`
     margin-bottom: 8px;
   }
 `;
-export { GameFormContainer };
+
+const GridContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  /* background-color: yellow; */
+  margin-top: auto;
+  gap: 8px;
+`;
+
+export { GameFormContainer, GridContainer };
