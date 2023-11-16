@@ -42,7 +42,7 @@ const FormItem = styled.div`
   
 
   .text-field {
-    width: 260px;
+    width: 320px;
     display: flex;
     margin: auto;
     justify-content: center;
