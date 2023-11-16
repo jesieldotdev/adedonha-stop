@@ -25,7 +25,7 @@ export const HomeScreenContainer = styled.div`
         width: 100%;
         height: 120px;
         border-radius: 16px;
-        font-size: 11px;
+        font-size: 20px;
         font-weight: 700;
         line-height: 1.2;
     }

@@ -16,8 +16,6 @@ const GameScreen = () => {
         Jogo Da Adedonha
       </Typography>
 
-      <WebSocketExample />
-
       <AddPlayerModal isOpen={open} close={closeModal} />
 
       <GridContainer>
