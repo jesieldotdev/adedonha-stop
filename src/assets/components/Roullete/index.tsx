@@ -39,6 +39,7 @@ const Roullete = ({
         onStopSpinning={() => {
           setMustSpin(false);
         }}
+        spinDuration={0.85}
         backgroundColors={[
           "#EE4040",
           "#F0CF50",
